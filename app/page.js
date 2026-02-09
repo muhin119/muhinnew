@@ -1,123 +1,129 @@
 "use client"
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Share2, MousePointerClick, Heart, ChevronDown, Home, Info, Phone, BookOpen, ArrowRight, X, Trophy } from 'lucide-react';
+import { 
+  Search, Share2, MousePointerClick, Heart, ChevronDown, 
+  Home, Info, Phone, BookOpen, ArrowRight, X, Trophy,
+  Facebook, Instagram, Linkedin, MessageCircle, Pin
+} from 'lucide-react';
 
-function AgencySite() {  const [view, setView] = useState('home'); 
+function AgencySite() {
+  const [view, setView] = useState('home');
 
-  // Themes that change the whole screen color based on selection
   const themes = {
     home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
-    seo: { bg: 'bg-[#1a2c24]', accent: '#55efab' },
-    smm: { bg: 'bg-[#2d1b33]', accent: '#ff7eb9' },
-    ads: { bg: 'bg-[#1b2733]', accent: '#4db8ff' },
-    about: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
-    contact: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' }
+    blog: { bg: 'bg-[#0a0a0a]', accent: '#3b82f6' },
+    about: { bg: 'bg-[#1a2c24]', accent: '#55efab' },
+    contact: { bg: 'bg-[#0a0a0a]', accent: '#ff7eb9' }
   };
 
-  const currentTheme = themes[view];
+  const currentTheme = themes[view] || themes.home;
 
   return (
-    <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-[#00ac62] selection:text-black overflow-hidden font-sans`}>
+    <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-white selection:text-black overflow-hidden`}>
       
       {/* --- DYNAMIC NAV BAR --- */}
-      <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md bg-black/10 border-b border-white/5">
+      <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md">
         <div className="text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
           MUHIN<span style={{ color: currentTheme.accent }}>.WAVE</span>
         </div>
-
-        <div className="hidden md:flex gap-10 items-center font-bold text-[11px] tracking-[0.2em] uppercase">
-          <button onClick={() => setView('home')} className="hover:text-[#00ac62] transition-colors flex items-center gap-2 font-black uppercase"><Home size={14}/> Home</button>
-          <button className="hover:text-[#00ac62] transition-colors flex items-center gap-2 font-black uppercase"><BookOpen size={14}/> Blog</button>
-          <button onClick={() => setView('about')} className="hover:text-[#00ac62] transition-colors flex items-center gap-2 font-black uppercase"><Info size={14}/> About</button>
-          
-          {/* Services with Sub-menu */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 hover:text-[#00ac62] transition-colors font-black uppercase">Services <ChevronDown size={14}/></button>
-            <div className="absolute top-full left-0 pt-4 hidden group-hover:block">
-              <div className="bg-[#161616] border border-white/10 p-5 rounded-3xl w-52 shadow-2xl">
-                <button onClick={() => setView('seo')} className="block w-full text-left py-2.5 hover:text-[#55efab] transition-all font-black uppercase">SEO Mastery</button>
-                <button onClick={() => setView('smm')} className="block w-full text-left py-2.5 hover:text-[#ff7eb9] transition-all font-black uppercase">SMM Growth</button>
-                <button onClick={() => setView('ads')} className="block w-full text-left py-2.5 hover:text-[#4db8ff] transition-all font-black uppercase">Google Ads</button>
-              </div>
-            </div>
-          </div>
-
-          <button onClick={() => setView('contact')} className="px-6 py-2.5 rounded-full border border-white/20 hover:bg-[#00ac62] hover:text-black transition-all font-black uppercase">Contact</button>
+        <div className="flex gap-8 text-[11px] font-bold tracking-[0.3em] uppercase opacity-60">
+          {['home', 'blog', 'about', 'contact'].map((item) => (
+            <button key={item} onClick={() => setView(item)} className={`hover:opacity-100 transition-opacity ${view === item ? 'opacity-100' : ''}`}>
+              {item}
+            </button>
+          ))}
         </div>
       </nav>
 
       <AnimatePresence mode="wait">
-        
         {/* --- HOME VIEW --- */}
         {view === 'home' && (
-          <motion.section key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-screen flex flex-col items-center justify-center text-center px-6">
-            <h1 className="text-7xl md:text-[120px] font-black tracking-tighter leading-[0.9] uppercase">Digital <br/><span style={{ color: currentTheme.accent }}>Wave.</span></h1>
-            <p className="mt-8 text-gray-500 tracking-[0.5em] font-black uppercase text-xs">Manager at Talentpull | Expert Digital Marketer</p>
+          <motion.section key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="h-screen flex flex-col justify-center items-center px-6 relative">
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+               <motion.div animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }} transition={{ duration: 20, repeat: Infinity }}
+                 className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px]" style={{ background: currentTheme.accent }} />
+            </div>
+            <motion.h1 initial={{ y: 20 }} animate={{ y: 0 }} className="text-8xl font-black tracking-tighter text-center">
+              WHO IS <span style={{ color: currentTheme.accent }}>MUHIN?</span>
+            </motion.h1>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+              className="mt-6 max-w-xl text-center text-lg opacity-60 leading-relaxed font-medium">
+              I am a Digital Marketing Manager based in Sylhet. I specialize in scaling UK-based restaurants through high-conversion Google Ads and Local SEO ecosystems.
+            </motion.p>
           </motion.section>
         )}
 
-        {/* --- SEO VISUAL DIRECTION --- */}
-        {view === 'seo' && (
-          <motion.section key="seo" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -100 }} className="h-screen flex flex-col md:flex-row items-center justify-center gap-20 px-20">
-            <div className="flex-1 relative h-64 w-full flex justify-center items-center">
-              <motion.div animate={{ x: [0, 50, -50, 0], y: [0, -30, 30, 0] }} transition={{ repeat: Infinity, duration: 6 }} className="absolute text-[#55efab] opacity-20"><Search size={200}/></motion.div>
-              <div className="flex items-end gap-3">
-                {[50, 80, 60, 100, 75, 90].map((h, i) => (
-                  <motion.div key={i} initial={{ height: 0 }} animate={{ height: h }} transition={{ delay: i*0.1 }} className="w-10 bg-[#55efab] rounded-t-xl shadow-[0_0_20px_#55efab]" />
-                ))}
+        {/* --- BLOG VIEW (Stylish Cards) --- */}
+        {view === 'blog' && (
+          <motion.section key="blog" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}
+            className="pt-32 px-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <motion.div key={i} whileHover={{ y: -10 }} className="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl">
+                <div className="w-12 h-12 rounded-lg mb-6 flex items-center justify-center" style={{ backgroundColor: currentTheme.accent }}>
+                  <BookOpen size={20} color="black" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Marketing Insight #{i}</h3>
+                <p className="text-sm opacity-50 mb-6">How we increased ROI for Talentpull UK clients by 400% using targeted meta ads.</p>
+                <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase">
+                  Read More <ArrowRight size={14} />
+                </div>
+              </motion.div>
+            ))}
+          </motion.section>
+        )}
+
+        {/* --- ABOUT & SUCCESS --- */}
+        {view === 'about' && (
+          <motion.section key="about" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="pt-32 px-10 grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div>
+              <h2 className="text-5xl font-black mb-8">MY STORY</h2>
+              <p className="opacity-70 leading-relaxed mb-6">Working with Talentpull UK, I've mastered the "Restaurant Ecosystem"—a blend of automation and advertising that keeps tables full.</p>
+              <div className="p-6 bg-white/5 rounded-xl border-l-4" style={{ borderColor: currentTheme.accent }}>
+                <Trophy className="mb-2" />
+                <h4 className="font-bold">Recent Success</h4>
+                <p className="text-sm opacity-60 italic">"Ranked #1 for 15+ London Restaurants in 3 months."</p>
               </div>
             </div>
-            <div className="flex-1 max-w-xl">
-              <h2 className="text-6xl font-black mb-6 uppercase tracking-tight">SEO Direction</h2>
-              <p className="text-xl text-gray-300 leading-relaxed font-medium">"Our crawlers scan your structure. Keywords are mapped. Your rankings rise as a visual trend."</p>
+            <div className="relative flex items-center justify-center">
+               <motion.div animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                 className="w-64 h-64 border-2 border-dashed rounded-full border-white/20 flex items-center justify-center">
+                 <div className="w-40 h-40 rounded-full bg-white/10 flex items-center justify-center font-black">RESULTS</div>
+               </motion.div>
             </div>
           </motion.section>
         )}
 
-        {/* --- SMM VISUAL DIRECTION --- */}
-        {view === 'smm' && (
-          <motion.section key="smm" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="h-screen flex flex-col items-center justify-center px-6 text-center">
-            <div className="relative mb-12">
-               <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="text-[#ff7eb9]"><Share2 size={120}/></motion.div>
-               {[...Array(8)].map((_, i) => (
-                 <motion.div key={i} animate={{ opacity: [0, 1, 0], y: -180, x: Math.random() * 400 - 200 }} transition={{ repeat: Infinity, duration: 2.5, delay: i*0.3 }} className="absolute top-0 text-[#ff7eb9]"><Heart fill="currentColor" size={24}/></motion.div>
-               ))}
-            </div>
-            <h2 className="text-6xl font-black mb-6 uppercase">SMM Growth</h2>
-            <p className="text-xl text-gray-300 max-w-2xl font-medium">Every post triggers a reaction. We visualize your brand engagement as it spreads across the digital landscape.</p>
-          </motion.section>
-        )}
-
-        {/* --- GOOGLE ADS VISUAL DIRECTION --- */}
-        {view === 'ads' && (
-          <motion.section key="ads" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} className="h-screen flex flex-col md:flex-row items-center justify-center gap-20 px-20">
-            <div className="flex-1 text-right">
-              <h2 className="text-6xl font-black mb-6 uppercase tracking-tighter">Ads Performance</h2>
-              <p className="text-xl text-gray-300 italic">"Targeted CPC. High-intent ROI engine."</p>
-            </div>
-            <div className="flex-1 bg-black/30 p-12 rounded-[50px] border border-white/10 w-full max-w-lg shadow-2xl">
-               <div className="flex justify-between items-end mb-6">
-                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#4db8ff]">ROI Multiplier</span>
-                 <span className="text-6xl font-black">8.4x</span>
-               </div>
-               <div className="w-full bg-white/5 h-5 rounded-full overflow-hidden mb-10">
-                 <motion.div initial={{ width: 0 }} animate={{ width: '84%' }} transition={{ duration: 2.5 }} className="h-full bg-[#4db8ff] shadow-[0_0_30px_#4db8ff]" />
-               </div>
-               <div className="grid grid-cols-2 gap-6">
-                  <div className="p-6 bg-white/5 rounded-3xl border border-white/5 text-center"><div className="text-[#4db8ff] font-black text-2xl tracking-tighter">LOW CPC</div></div>
-                  <div className="p-6 bg-white/5 rounded-3xl border border-white/5 text-center"><div className="text-[#4db8ff] font-black text-2xl tracking-tighter">HIGH CTR</div></div>
-               </div>
+        {/* --- CONTACT & SOCIALS --- */}
+        {view === 'contact' && (
+          <motion.section key="contact" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="h-screen flex flex-col justify-center items-center">
+            <h2 className="text-6xl font-black mb-12">CONNECT</h2>
+            <div className="flex gap-10">
+              {[
+                { icon: <Facebook />, label: 'FB', color: '#1877F2' },
+                { icon: <Instagram />, label: 'IG', color: '#E4405F' },
+                { icon: <Linkedin />, label: 'IN', color: '#0A66C2' },
+                { icon: <Pin />, label: 'PT', color: '#BD081C' },
+                { icon: <MessageCircle />, label: 'WA', color: '#25D366' }
+              ].map((social) => (
+                <motion.a key={social.label} href="#" whileHover={{ y: -15, scale: 1.2 }} className="flex flex-col items-center gap-3">
+                  <div className="p-5 rounded-full bg-white/5 border border-white/10 hover:border-white/40 transition-colors" style={{ color: social.color }}>
+                    {social.icon}
+                  </div>
+                  <span className="text-[10px] font-black opacity-40">{social.label}</span>
+                </motion.a>
+              ))}
             </div>
           </motion.section>
         )}
-</AnimatePresence>
+      </AnimatePresence>
 
-<footer className="fixed bottom-10 w-full text-center text-[10px] tracking-[0.4em] font-black opacity-20 uppercase">
-  © 2026 MUHIN.WAVE - Digital Marketing Manager in Sylhet
-</footer>
-</main>
-);
+      <footer className="fixed bottom-10 w-full text-center text-[10px] tracking-[0.4em] font-black opacity-20 uppercase">
+        © 2026 MUHIN WAVE - SYLHET
+      </footer>
+    </main>
+  );
 }
 
 export default AgencySite;
