@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'MUHIN.WAVE | Digital Marketing Manager',
-  description: 'Expert SEO and Ads for UK & BD.',
+  title: 'MUHIN WAVE | Digital Marketing Expert',
+  description: 'Expert SMM and Ads for UK & BD.',
 }
 
 export default function RootLayout({ children }) {
