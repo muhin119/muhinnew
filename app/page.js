@@ -54,8 +54,7 @@ function AgencySite() {
   );
 
   return (
-    <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-white selection:text-black overflow-hidden`}>
-      
+<main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-[#00ac62] selection:text-black overflow-x-hidden flex flex-col px-6 md:px-10`}>      
       {/* --- CAPITALIZED NAV BAR --- */}
       <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
         <div className="text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
@@ -104,16 +103,11 @@ function AgencySite() {
                />
             </div>
 
-            {/* 2. THE MUHIN.WAVE SCALE (12vw) */}
+            {/* 2. THE MUHIN WAVE SCALE (12vw) */}
             <div className="relative z-10 flex flex-col items-center">
-              <motion.h1 
-                className="text-[12vw] leading-[0.8] font-black tracking-tighter text-center uppercase mb-8"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1, ease: "circOut" }}
-              >
-                MUHIN<span style={{ color: '#00ac62' }}>.WAVE</span>
-              </motion.h1>
+            <motion.h1 className="text-[18vw] md:text-[12vw] leading-[0.8] font-black tracking-tighter text-center uppercase mb-8">
+  MUHIN<span style={{ color: '#00ac62' }}>WAVE</span>
+</motion.h1>
 
               {/* 3. STAGGERED ENTRANCE TAGLINE */}
               <div className="flex flex-wrap justify-center gap-x-4 max-w-3xl mb-12">
@@ -135,8 +129,7 @@ function AgencySite() {
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 1.2 }}
-  className="flex gap-16 mb-16 mt-8"
->
+  className="flex flex-col md:flex-row gap-10 md:gap-16 mb-16 mt-8 items-center justify-center">
   <div className="flex flex-col items-center">
     <div className="text-5xl font-black text-white">
       <LiveNumber value="1000" suffix="+" />
