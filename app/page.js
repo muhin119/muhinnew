@@ -12,12 +12,13 @@ function AgencySite() {
 
   const themes = {
     home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
-    blog: { bg: 'bg-[#0a0a0a]', accent: '#3b82f6' },
-    about: { bg: 'bg-[#1a2c24]', accent: '#55efab' },
+    blog: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+    about: { bg: 'bg-[#1a2c24]', accent: '#00ac62' },
     contact: { bg: 'bg-[#0a0a0a]', accent: '#ff7eb9' }
   };
 
   const currentTheme = themes[view] || themes.home;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-white selection:text-black overflow-hidden`}>
