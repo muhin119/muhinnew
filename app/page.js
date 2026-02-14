@@ -95,26 +95,40 @@ export default function AgencySite() {
         )}
         </div>
         
-      {/* --- CAPITALIZED NAV BAR --- */}
-      <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
-        <div className="text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
+      <nav className="fixed w-full z-[100] py-6 px-6 md:px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
+        <div className="text-xl md:text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
           MUHIN<span style={{ color: currentTheme.accent }}>.WAVE</span>
         </div>
-        <div className="flex gap-8 text-[11px] font-black tracking-[0.3em] uppercase opacity-70">
+
+        {/* MOBILE MENU BUTTON (Shows only on phones) */}
+        <button 
+          className="md:hidden p-2 rounded-xl bg-white/5 border border-white/10"
+          onClick={() => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+          }}
+        >
+          <div className="w-6 h-0.5 bg-white mb-1"></div>
+          <div className="w-6 h-0.5 bg-white mb-1"></div>
+          <div className="w-6 h-0.5 bg-white"></div>
+        </button>
+
+        {/* DESKTOP LINKS (Hidden on phones) */}
+        <div className="hidden md:flex gap-8 text-[11px] font-black tracking-[0.3em] uppercase opacity-70">
           <button onClick={() => setView('home')} className="hover:opacity-100 transition-opacity">HOME</button>
-          <div className="relative group cursor-pointer">
-            <button className="flex items-center gap-1 hover:opacity-100 transition-opacity">SERVICES <ChevronDown size={14}/></button>
-            <div className="absolute top-full left-[-20px] pt-4 hidden group-hover:block">
-              <div className="bg-[#161616] border border-white/10 p-5 rounded-3xl w-52 shadow-2xl backdrop-blur-2xl">
-                <button onClick={() => setView('seo')} className="block w-full text-left py-2.5 text-[10px] hover:text-[#55efab] transition-all tracking-widest uppercase">SEO MASTERY</button>
-                <button onClick={() => setView('smm')} className="block w-full text-left py-2.5 text-[10px] hover:text-[#ff7eb9] transition-all tracking-widest uppercase">SMM GROWTH</button>
-                <button onClick={() => setView('ads')} className="block w-full text-left py-2.5 text-[10px] hover:text-[#4db8ff] transition-all tracking-widest uppercase">GOOGLE ADS</button>
-              </div>
-            </div>
-          </div>
-          <button onClick={() => setView('blog')} className="hover:opacity-100 transition-opacity">BLOG</button>
-          <button onClick={() => setView('about')} className="hover:opacity-100 transition-opacity">ABOUT</button>
+          <button onClick={() => setView('seo')} className="hover:opacity-100 transition-opacity">SEO</button>
+          <button onClick={() => setView('smm')} className="hover:opacity-100 transition-opacity">SMM</button>
+          <button onClick={() => setView('ads')} className="hover:opacity-100 transition-opacity">ADS</button>
           <button onClick={() => setView('contact')} className="hover:opacity-100 transition-opacity">CONTACT</button>
+        </div>
+
+        {/* MOBILE SLIDE-DOWN MENU (Hidden by default) */}
+        <div id="mobile-menu" className="hidden absolute top-full left-0 w-full bg-[#0F0F0F] border-b border-white/10 p-10 flex flex-col gap-8 text-center md:hidden backdrop-blur-3xl">
+          <button onClick={() => { setView('home'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">HOME</button>
+          <button onClick={() => { setView('seo'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">SEO MASTERY</button>
+          <button onClick={() => { setView('smm'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">SMM GROWTH</button>
+          <button onClick={() => { setView('ads'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">GOOGLE ADS</button>
+          <button onClick={() => { setView('contact'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]" style={{ color: '#00ac62' }}>START THE WAVE</button>
         </div>
       </nav>
 
