@@ -180,25 +180,77 @@ function AgencySite() {
           </motion.section>
         )}y click.
 
-        {/* --- SMM VIEW --- */}
-        {view === 'smm' && (
-          <motion.section key="smm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-screen flex flex-col justify-center items-center">
-            <div className="relative">
-              <Share2 size={80} style={{ color: currentTheme.accent }} />
-              {[
-                {Icon: Facebook, color: '#1877F2'}, {Icon: Instagram, color: '#E4405F'}, 
-                {Icon: ThumbsUp, color: '#ff7eb9'}, {Icon: Heart, color: '#ff4d4d'},
-                {Icon: MessageSquare, color: '#55efab'}, {Icon: Send, color: '#4db8ff'}
-              ].map(({Icon, color}, i) => (
-                <motion.div key={i} initial={{ scale: 0, opacity: 1 }} animate={{ y: -150, x: (i - 2.5) * 60, scale: 1.2, opacity: 0 }}
-                  transition={{ repeat: Infinity, duration: 2.5, delay: i * 0.3 }} className="absolute inset-0 flex justify-center items-center">
-                  <Icon size={32} style={{ color }} />
-                </motion.div>
-              ))}
+        {/* --- ULTRA-DYNAMIC SMM VIRAL HUB --- */}
+{view === 'smm' && (
+  <motion.section 
+    key="smm" 
+    initial={{ opacity: 0 }} 
+    animate={{ opacity: 1 }}
+    className="relative flex flex-col items-center justify-center min-h-[500px] py-12"
+  >
+    <div className="relative w-full max-w-[400px] h-[400px] flex items-center justify-center">
+      
+      {/* 1. THE CORE: Your Brand Strategy Hub */}
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.1, 1],
+          boxShadow: ["0 0 20px #00ac62", "0 0 60px #00ac62", "0 0 20px #00ac62"] 
+        }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="z-20 w-28 h-28 bg-[#00ac62] rounded-[2.5rem] flex items-center justify-center text-black shadow-lg"
+      >
+        <Share2 size={48} strokeWidth={2.5} />
+      </motion.div>
+
+      {/* 2. THE CHANNELS: Orbital Social Nodes */}
+      {[
+        { Icon: Facebook, color: '#1877F2', delay: 0 },
+        { Icon: Instagram, color: '#E4405F', delay: 1 },
+        { Icon: Linkedin, color: '#0A66C2', delay: 2 },
+        { Icon: MessageCircle, color: '#25D366', delay: 3 }
+      ].map((social, i) => (
+        <motion.div
+          key={i}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20 + i * 5, repeat: Infinity, ease: "linear" }}
+          className="absolute w-[260px] md:w-[320px] h-[260px] md:h-[320px] rounded-full border border-white/5"
+        >
+          <motion.div 
+            className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            animate={{ rotate: -360 }} // Keeps icons upright
+            transition={{ duration: 20 + i * 5, repeat: Infinity, ease: "linear" }}
+          >
+            {/* The Neon Icon Card */}
+            <div 
+              className="p-4 bg-black/80 border rounded-2xl backdrop-blur-xl shadow-xl transition-all hover:scale-125"
+              style={{ borderColor: `${social.color}66`, color: social.color }}
+            >
+              <social.Icon size={28} />
+              
+              {/* Dynamic Data Beam */}
+              <motion.div 
+                animate={{ height: [0, 80, 0], opacity: [0, 0.8, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: social.delay }}
+                className="w-[2px] mx-auto mt-2 bg-gradient-to-t from-current to-transparent"
+              />
             </div>
-            <ServiceText title="Engagement Ecosystem" benefit="I don't just post; I create viral buzz. By automating likes, shares, and comments, I ensure your brand stays top-of-mind for every customer." />
-          </motion.section>
-        )}
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* 3. BRANDING TEXT: UK Restaurant Focus */}
+    <div className="mt-12 text-center z-10">
+      <h3 className="text-4xl font-black tracking-tighter uppercase mb-4">
+        Engagement <span style={{ color: '#00ac62' }}>Ecosystem</span>
+      </h3>
+      <p className="text-white/60 max-w-md mx-auto text-lg leading-relaxed px-6">
+        We don't just post; we create viral momentum that turns followers into 
+        <span className="text-white font-bold"> restaurant bookings.</span>
+      </p>
+    </div>
+  </motion.section>
+)}
 
         {/* --- ADS VIEW --- */}
         {view === 'ads' && (
