@@ -167,20 +167,19 @@ function AgencySite() {
           </motion.section>
         )}
 
-    {/* --- ULTRA-DYNAMIC LOCAL SEO DOMINATION --- */}
+    {/* --- ULTRA-DYNAMIC LOCAL SEO MASTERED --- */}
 {view === 'seo' && (
   <motion.section 
     key="seo" 
-    initial={{ opacity: 0, x: -50 }} 
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: 50 }}
+    initial={{ opacity: 0, y: 50 }} 
+    animate={{ opacity: 1, y: 0 }}
     className="w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col lg:flex-row-reverse items-center justify-between gap-16"
   >
-    {/* Right: Geographic Scanning Visual */}
+    {/* Right: The Geographic Scanning Hub */}
     <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 overflow-hidden flex items-center justify-center shadow-2xl">
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#00ac62 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
       
-      <div className="relative w-full flex justify-center items-center gap-6 md:gap-12 px-6">
+      <div className="relative w-full flex justify-center items-center gap-8 px-6">
         {[
           { Icon: MapPin, label: "MAPS" },
           { Icon: Navigation, label: "TRAFFIC" },
@@ -191,43 +190,34 @@ function AgencySite() {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.8 }}
-              className="flex flex-col items-center gap-4 md:gap-6"
+              className="flex flex-col items-center gap-4"
             >
-              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-[#00ac62]/30 flex items-center justify-center bg-black shadow-[0_0_30px_rgba(0,172,98,0.2)]">
+              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full border border-[#00ac62]/30 flex items-center justify-center bg-black shadow-[0_0_30px_rgba(0,172,98,0.2)]">
                 <item.Icon size={32} className="text-[#00ac62]" />
               </div>
-              <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-[#00ac62] uppercase">{item.label}</span>
+              <span className="text-[10px] font-black tracking-[0.4em] text-[#00ac62] uppercase">{item.label}</span>
             </motion.div>
+            
             {i < 2 && (
-  <motion.div
-    initial={{ width: 0 }}
-    animate={{ width: ["40px", "80px"] }} // Corrected: Uses array for responsive breakpoints
-    transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
-    className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
-  />
-)}
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: "60px" }} // Fixed syntax error: No "md:" shorthand here
+                transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
+                className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
+              />
+            )}
           </React.Fragment>
         ))}
       </div>
-      
-      {/* Scanning Line Animation */}
-      <motion.div 
-        animate={{ left: ['-100%', '200%'] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        className="absolute top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-[#00ac62]/10 to-transparent skew-x-12"
-      />
     </div>
 
-    {/* Left: Content Area */}
+    {/* Left: Content */}
     <div className="w-full lg:w-[35%] text-left space-y-8">
-      <div className="inline-block px-4 py-2 bg-[#00ac62]/10 border border-[#00ac62]/30 rounded-lg">
-        <span className="text-[#00ac62] text-[10px] font-black tracking-[0.3em] uppercase">Local Authority</span>
-      </div>
-      <h3 className="text-6xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase">
+      <h3 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase">
         LOCAL <br/> <span style={{ color: '#00ac62' }}>COMMAND</span>
       </h3>
       <p className="text-xl text-white/50 leading-relaxed font-medium">
-        Total geographic authority. We turn local road signs into digital tunnels leading straight to your restaurant's front door.
+        Total geographic authority. We turn local road signs into digital tunnels leading straight to your restaurant's door.
       </p>
     </div>
   </motion.section>
