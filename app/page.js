@@ -167,68 +167,60 @@ function AgencySite() {
           </motion.section>
         )}
 
-        {/* --- ULTRA-DYNAMIC LOCAL SEO MATRIX --- */}
+        {/* --- ULTRA-DYNAMIC SEO SCANNER --- */}
 {view === 'seo' && (
   <motion.section 
     key="seo" 
-    initial={{ opacity: 0, scale: 0.95 }} 
-    animate={{ opacity: 1, scale: 1 }}
-    className="relative flex flex-col items-center justify-center min-h-[500px] py-12 px-6"
+    initial={{ opacity: 0 }} 
+    animate={{ opacity: 1 }}
+    className="w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col lg:flex-row-reverse items-center justify-between gap-16"
   >
-    {/* 1. THE RADAR GRID: Represents Search Visibility */}
-    <div className="relative w-full max-w-[500px] aspect-square grid grid-cols-5 gap-3 p-6 bg-white/5 rounded-[3rem] border border-white/10 backdrop-blur-xl overflow-hidden">
+    {/* Left: Geographic Scanning Visual */}
+    <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 overflow-hidden flex items-center justify-center">
+      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#00ac62 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
       
-      {/* The Moving Radar Sweep */}
-      <motion.div 
-        animate={{ rotate: 360 }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 z-10 origin-center bg-[conic-gradient(from_0deg,transparent_0%,#00ac62_10%,transparent_20%)] opacity-30"
-      />
-
-      {/* The Search Nodes */}
-      {[...Array(25)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="relative group w-full aspect-square bg-white/5 border border-white/10 rounded-xl overflow-hidden"
-        >
-          {/* Neon "Ranking" Fill */}
-          <motion.div 
-            animate={{ 
-              opacity: [0.1, 0.8, 0.1],
-              scale: [0.8, 1, 0.8]
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              delay: i * 0.15 
-            }}
-            className="absolute inset-0 bg-[#00ac62]"
-          />
-          {/* Highlight for "Rank #1" Node */}
-          {i === 12 && (
-            <div className="absolute inset-0 flex items-center justify-center z-20">
-              <div className="w-4 h-4 bg-white rounded-full animate-ping shadow-[0_0_20px_#fff]" />
-            </div>
-          )}
-        </motion.div>
-      ))}
+      <div className="relative w-full flex justify-center items-center gap-12 px-10">
+        {[
+          { Icon: MapPin, label: "MAPS" },
+          { Icon: Navigation, label: "TRAFFIC" },
+          { Icon: Utensils, label: "DINING" }
+        ].map((item, i) => (
+          <React.Fragment key={i}>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.8 }}
+              className="flex flex-col items-center gap-6"
+            >
+              <div className="w-24 h-24 rounded-full border border-[#00ac62]/30 flex items-center justify-center bg-black shadow-[0_0_30px_rgba(0,172,98,0.1)]">
+                <item.Icon size={40} className="text-[#00ac62]" />
+              </div>
+              <span className="text-xs font-black tracking-[0.4em] text-[#00ac62]">{item.label}</span>
+            </motion.div>
+            {i < 2 && (
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: "80px" }}
+                transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
+                className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
+              />
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
 
-    {/* 2. LIVE PERFORMANCE TRACKER */}
-    <div className="mt-10 text-center">
-      <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#00ac62]/10 border border-[#00ac62]/30 text-[#00ac62] font-black text-xs tracking-[0.3em] uppercase mb-6">
-        <div className="w-2 h-2 bg-[#00ac62] rounded-full animate-pulse" />
-        Keyword Indexing: Active
-      </div>
-      
-      <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-4">
-        LOCAL <span style={{ color: '#00ac62' }}>DOMINATION</span>
+    {/* Right: Content */}
+    <div className="w-full lg:w-[35%] text-left space-y-8">
+      <h3 className="text-6xl font-black tracking-tighter leading-[0.9] uppercase">
+        LOCAL <br/> <span style={{ color: '#00ac62' }}>COMMAND</span>
       </h3>
-      <p className="text-white/60 max-w-lg mx-auto text-lg leading-relaxed">
-        We push your restaurant to the top of <span className="text-white font-bold">Google Maps</span> by optimizing 100+ local citations and high-intent keywords.
+      <p className="text-xl text-white/50 leading-relaxed font-medium">
+        Total geographic authority. We turn local road signs into digital tunnels leading straight to your door.
       </p>
     </div>
   </motion.section>
+)}
 )}
         {/* --- ULTRA-DYNAMIC SMM VIRAL HUB --- */}
 {view === 'smm' && (
@@ -302,68 +294,65 @@ function AgencySite() {
   </motion.section>
 )}
 
-        {/* --- ULTRA-DYNAMIC GOOGLE ADS PROFIT ESCALATOR --- */}
+{/* --- ULTRA-DYNAMIC ADS ENGINE --- */}
 {view === 'ads' && (
   <motion.section 
     key="ads" 
-    initial={{ opacity: 0, y: 30 }} 
+    initial={{ opacity: 0, y: 50 }} 
     animate={{ opacity: 1, y: 0 }}
-    className="relative flex flex-col items-center justify-center min-h-[500px] py-12 px-6"
+    className="w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col lg:flex-row items-center justify-between gap-16"
   >
-    {/* 1. THE REVENUE CHART: Visualizing the 8.4X ROI */}
-    <div className="relative w-full max-w-[600px] h-[350px] bg-white/5 rounded-[3rem] border border-white/10 backdrop-blur-xl overflow-hidden p-8 flex flex-col justify-end">
+    {/* Left: Cinematic ROI Visual */}
+    <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 shadow-2xl overflow-hidden flex items-end p-12">
+      {/* Dynamic ROI Line */}
+      <svg className="absolute inset-0 w-full h-full opacity-80" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <motion.path
+          d="M 5 95 C 10 95, 30 95, 45 60 C 60 25, 85 5, 95 5"
+          fill="none"
+          stroke="#00ac62"
+          strokeWidth="1.5"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 4, ease: "easeInOut" }}
+        />
+        <motion.path
+          d="M 5 95 C 10 95, 30 95, 45 60 C 60 25, 85 5, 95 5"
+          fill="none"
+          stroke="#00ac62"
+          strokeWidth="4"
+          className="blur-md"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 4, ease: "easeInOut" }}
+        />
+      </svg>
       
-      {/* Background ROI Grid */}
-      <div className="absolute inset-0 opacity-[0.03]" 
-        style={{ backgroundImage: `linear-gradient(#00ac62 1px, transparent 1px), linear-gradient(90deg, #00ac62 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
-      />
-
-      <div className="relative flex items-end gap-2 md:gap-4 h-full">
-        {[40, 65, 50, 85, 70, 100].map((height, i) => (
-          <div key={i} className="relative flex-1 flex flex-col items-center justify-end group">
-            
-            {/* The Growth Pillar */}
-            <motion.div 
-              initial={{ height: 0 }}
-              animate={{ height: `${height}%` }}
-              transition={{ duration: 1.5, delay: i * 0.2, ease: "easeOut" }}
-              className="w-full bg-gradient-to-t from-[#00ac62]/20 to-[#00ac62] rounded-t-xl relative"
-            >
-              {/* Top Glow Cap */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-white shadow-[0_0_15px_#fff]" />
-            </motion.div>
-
-            {/* Floating ROI Tooltip on the last bar */}
-            {i === 5 && (
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: -10 }}
-                transition={{ delay: 2.5 }}
-                className="absolute top-0 -translate-y-full bg-white text-black px-3 py-1 rounded-lg font-black text-sm shadow-[0_0_20px_rgba(255,255,255,0.5)]"
-              >
-                8.4X ROI
-              </motion.div>
-            )}
-          </div>
-        ))}
+      <div className="relative z-10 w-full flex justify-between items-end">
+        <div className="space-y-1">
+          <span className="text-[10px] font-black tracking-[0.4em] opacity-30 uppercase">Investment Phase</span>
+          <div className="text-2xl font-black">£0.00</div>
+        </div>
+        <div className="text-right">
+          <motion.div 
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 3.5 }}
+            className="text-8xl md:text-9xl font-black text-[#00ac62] tracking-tighter leading-none"
+          >
+            <LiveNumber value="8.4" suffix="X" />
+          </motion.div>
+          <span className="text-xs font-black tracking-[0.5em] text-white/40 uppercase">Maximum ROI Upgrade</span>
+        </div>
       </div>
     </div>
 
-    {/* 2. AD CAMPAIGN TEXT: Focused on Precision */}
-    <div className="mt-10 text-center">
-      <div className="flex justify-center gap-4 mb-8">
-        {['SEARCH', 'REMARKETING', 'CONVERSIONS'].map((tag) => (
-          <span key={tag} className="text-[10px] font-black tracking-widest text-[#00ac62] border border-[#00ac62]/30 px-3 py-1 rounded-md bg-[#00ac62]/5">
-            {tag}
-          </span>
-        ))}
-      </div>
-      
-      <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-4">
-        PROFIT <span style={{ color: '#00ac62' }}>SCALING</span>
+    {/* Right: Copy Content */}
+    <div className="w-full lg:w-[35%] text-left space-y-8">
+      <h3 className="text-6xl font-black tracking-tighter leading-[0.9] uppercase">
+        MONEY <br/> <span style={{ color: '#00ac62' }}>PRINTER</span>
       </h3>
-      <p className="text-white/60 max-w-lg mx-auto text-lg leading-relaxed">
-        Stop wasting budget. We deploy <span className="text-white font-bold">high-precision ad campaigns</span> that turn search intent into immediate restaurant revenue.
+      <p className="text-xl text-white/50 leading-relaxed font-medium">
+        We upgrade your current Google Ads from a cost-center into a high-precision revenue machine.
       </p>
     </div>
   </motion.section>
