@@ -171,15 +171,15 @@ function AgencySite() {
 {view === 'seo' && (
   <motion.section 
     key="seo" 
-    initial={{ opacity: 0, y: 50 }} 
+    initial={{ opacity: 0, y: 30 }} 
     animate={{ opacity: 1, y: 0 }}
     className="w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col lg:flex-row-reverse items-center justify-between gap-16"
   >
-    {/* Right: The Geographic Scanning Hub */}
+    {/* Right: Geographic Scanning Hub */}
     <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 overflow-hidden flex items-center justify-center shadow-2xl">
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#00ac62 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
       
-      <div className="relative w-full flex justify-center items-center gap-8 px-6">
+      <div className="relative w-full flex justify-center items-center gap-6 md:gap-12 px-6">
         {[
           { Icon: MapPin, label: "MAPS" },
           { Icon: Navigation, label: "TRAFFIC" },
@@ -192,16 +192,16 @@ function AgencySite() {
               transition={{ delay: i * 0.8 }}
               className="flex flex-col items-center gap-4"
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full border border-[#00ac62]/30 flex items-center justify-center bg-black shadow-[0_0_30px_rgba(0,172,98,0.2)]">
+              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-[#00ac62]/30 flex items-center justify-center bg-black">
                 <item.Icon size={32} className="text-[#00ac62]" />
               </div>
-              <span className="text-[10px] font-black tracking-[0.4em] text-[#00ac62] uppercase">{item.label}</span>
+              <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-[#00ac62] uppercase">{item.label}</span>
             </motion.div>
             
             {i < 2 && (
               <motion.div 
                 initial={{ width: 0 }}
-                animate={{ width: 60 }} // FIXED: Removed "md:" shorthand that caused the crash
+                animate={{ width: ["30px", "80px"] }} // FIXED: Using an array for mobile/desktop
                 transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
                 className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
               />
@@ -211,13 +211,13 @@ function AgencySite() {
       </div>
     </div>
 
-    {/* Left: Content */}
+    {/* Left: Content Area */}
     <div className="w-full lg:w-[35%] text-left space-y-8">
       <h3 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase">
-        LOCAL <br/> <span style={{ color: '#00ac62' }}>COMMAND</span>
+        SEO <br/> <span style={{ color: '#00ac62' }}>MASTERY</span>
       </h3>
       <p className="text-xl text-white/50 leading-relaxed font-medium">
-        Total geographic authority. We turn local road signs into digital tunnels leading straight to your restaurant's door.
+        We bridge the gap between a digital map search and a physical restaurant booking. Total geographic authority.
       </p>
     </div>
   </motion.section>
