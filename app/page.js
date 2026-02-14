@@ -199,13 +199,13 @@ function AgencySite() {
             </motion.div>
             
             {i < 2 && (
-              <motion.div 
-                initial={{ width: 0 }}
-                animate={{ width: ["30px", "80px"] }} // FIXED: Using an array for mobile/desktop
-                transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
-                className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
-              />
-            )}
+  <motion.div
+    initial={{ width: 0 }}
+    animate={{ width: 60 }} // FIXED: Using a plain number that works on all screens
+    transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
+    className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
+  />
+)}
           </React.Fragment>
         ))}
       </div>
