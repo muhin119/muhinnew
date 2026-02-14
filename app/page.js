@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, Share2, Heart, ChevronDown, Trophy,
@@ -20,8 +20,8 @@ const themes = {
 
 // 2. LIVENUMBER COMPONENT
 const LiveNumber = ({ value, suffix = "" }) => {
-  const [count, setCount] = React.useState(0);
-  React.useEffect(() => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
     let start = 0;
     const end = parseFloat(value);
     const duration = 2000;
@@ -47,7 +47,7 @@ const LiveNumber = ({ value, suffix = "" }) => {
 export default function AgencySite() {
   const [view, setView] = useState('home');
 
-  // CRITICAL FIX: Define currentTheme INSIDE the function
+  // CRITICAL FIX: currentTheme MUST be defined inside the function
   const currentTheme = themes[view] || themes.home;
 
   // INTERNAL HELPER COMPONENT
@@ -93,12 +93,7 @@ export default function AgencySite() {
             </p>
           </motion.div>
         )}
-
-        {/* This is where your Nav Bar logic will continue below */}
-      </div>
-    </main>
-  );
-}
+        
       {/* --- CAPITALIZED NAV BAR --- */}
       <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
         <div className="text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
