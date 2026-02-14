@@ -201,7 +201,7 @@ function AgencySite() {
             {i < 2 && (
               <motion.div 
                 initial={{ width: 0 }}
-                animate={{ width: "60px" }} // Fixed syntax error: No "md:" shorthand here
+                animate={{ width: 60 }} // FIXED: Removed "md:" shorthand that caused the crash
                 transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
                 className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
               />
