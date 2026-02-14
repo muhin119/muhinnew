@@ -199,13 +199,13 @@ function AgencySite() {
               <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-[#00ac62] uppercase">{item.label}</span>
             </motion.div>
             {i < 2 && (
-              <motion.div 
-                initial={{ width: 0 }}
-                animate={{ width: "40px", md: width: "80px" }}
-                transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
-                className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
-              />
-            )}
+  <motion.div
+    initial={{ width: 0 }}
+    animate={{ width: ["40px", "80px"] }} // Corrected: Uses array for responsive breakpoints
+    transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
+    className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
+  />
+)}
           </React.Fragment>
         ))}
       </div>
