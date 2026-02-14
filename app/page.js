@@ -41,14 +41,55 @@ const LiveNumber = ({ value, suffix = "" }) => {
 };
 
 function AgencySite() {
+  // 1. STATE DEFINITION
   const [view, setView] = useState('home');
+
+  // 2. CRITICAL FIX: Define currentTheme INSIDE the function
+  const currentTheme = themes[view] || themes.home;
+
+  // 3. INTERNAL COMPONENT (Using currentTheme correctly)
   const ServiceText = ({ title, benefit }) => (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-      className="mt-12 max-w-2xl text-center px-6">
-      <h3 className="text-2xl font-black uppercase mb-4 tracking-tighter" style={{ color: currentTheme.accent }}>{title}</h3>
-      <p className="text-sm opacity-60 leading-relaxed uppercase tracking-widest font-bold">{benefit}</p>
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }} 
+      animate={{ opacity: 1, y: 0 }} 
+      transition={{ delay: 0.5 }}
+      className="mt-12 max-w-2xl text-center px-6"
+    >
+      <h3 className="text-2xl font-black uppercase mb-4 tracking-tighter" style={{ color: currentTheme.accent }}>
+        {title}
+      </h3>
+      <p className="text-sm opacity-60 leading-relaxed uppercase tracking-widest font-bold">
+        {benefit}
+      </p>
     </motion.div>
   );
+
+  return (
+    <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-[#00ac62] selection:text-black overflow-x-hidden flex flex-col relative`}>
+      
+      {/* BACKGROUND GLOW - FIXED FOR MOBILE */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute top-[-10%] right-[-10%] w-[130vw] h-[130vw] rounded-full blur-[100px]"
+          style={{ background: `radial-gradient(circle, ${currentTheme.accent} 0%, transparent 70%)` }}
+        />
+      </div>
+
+      {/* CONTENT WRAPPER */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-10 py-20 flex flex-col items-center justify-center min-h-screen">
+        {/* Your content will show up here now without errors */}
+        {view === 'home' && (
+          <h1 className="text-[12vw] md:text-[8rem] font-black tracking-tighter uppercase text-center">
+            MUHIN<span style={{ color: currentTheme.accent }}>WAVE</span>
+          </h1>
+        )}
+      </div>
+
+    </main>
+  );
+}
 
   return (
 <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-[#00ac62] selection:text-black overflow-x-hidden flex flex-col px-6 md:px-10`}>      
