@@ -96,8 +96,6 @@ function AgencySite() {
     </main>
   ); // THIS CLOSES THE RETURN
 } // THIS CLOSES THE FUNCTION
-  const currentTheme = themes[view] || themes.home;
-
   const ServiceText = ({ title, benefit }) => (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
       className="mt-12 max-w-2xl text-center px-6">
