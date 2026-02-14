@@ -32,10 +32,14 @@ const LiveNumber = ({ value, suffix = "" }) => {
 };
 function AgencySite() {
   const [view, setView] = useState('home');
-return (
+
+  // 1. DEFINE currentTheme INSIDE THE FUNCTION
+  const currentTheme = themes[view] || themes.home;
+
+  return (
     <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white relative overflow-x-hidden`}>
       
-      {/* 1. FOUNDATION: BACKGROUND GLOW */}
+      {/* 2. FOUNDATION: MOBILE-SAFE BACKGROUND */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
@@ -45,26 +49,45 @@ return (
         />
       </div>
 
-      {/* 2. RESPONSIVE WRAPPER (Fits Mobile & PC) */}
+      {/* 3. UNIVERSAL CONTENT WRAPPER */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-10 py-12 md:py-24">
         
         {/* HERO SECTION */}
         {view === 'home' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center">
-            <h1 className="text-[14vw] md:text-[8rem] font-black tracking-tighter leading-[0.8] mb-6 uppercase">
-              MUHIN<span className="text-[#00ac62]">WAVE</span>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center w-full">
+            <h1 className="text-[14vw] md:text-[8rem] font-black tracking-tighter leading-[0.8] mb-6 uppercase flex flex-col items-center">
+              <span>MUHIN</span>
+              <span className="text-[#00ac62]">WAVE</span>
             </h1>
-            <p className="text-xs md:text-xl font-bold tracking-[0.4em] mb-12 opacity-60 uppercase">
+            <p className="text-[10px] md:text-xl font-bold tracking-[0.4em] mb-12 opacity-60 uppercase">
               Scaling Restaurants With Precision
             </p>
-            {/* ... Rest of your Hero code */}
+            
+            {/* STATS */}
+            <div className="flex flex-col md:flex-row gap-8 md:gap-20 justify-center items-center mb-16">
+              <div className="text-center">
+                <div className="text-4xl md:text-6xl font-black"><LiveNumber value="1000" suffix="+" /></div>
+                <div className="text-[8px] tracking-widest opacity-40 uppercase">Leads Generated</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-6xl font-black text-[#00ac62]"><LiveNumber value="8.4" suffix="X" /></div>
+                <div className="text-[8px] tracking-widest opacity-40 uppercase">Average ROI</div>
+              </div>
+            </div>
+
+            <button 
+              onClick={() => setView('contact')}
+              className="bg-[#00ac62] text-black font-black px-10 py-5 rounded-full text-[10px] tracking-[0.2em] uppercase shadow-[0_20px_40px_rgba(0,172,98,0.3)]"
+            >
+              Start The Wave
+            </button>
           </motion.div>
         )}
-
       </div>
     </main>
-  );
-}
+  ); // THIS CLOSES THE RETURN
+} // THIS CLOSES THE FUNCTION
+
   const themes = {
   home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
   seo: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
