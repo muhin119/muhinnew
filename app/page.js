@@ -42,61 +42,6 @@ const LiveNumber = ({ value, suffix = "" }) => {
 
 function AgencySite() {
   const [view, setView] = useState('home');
-
-  // 1. DEFINE currentTheme INSIDE THE FUNCTION
-  const currentTheme = themes[view] || themes.home;
-
-  return (
-    <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white relative overflow-x-hidden`}>
-      
-      {/* 2. FOUNDATION: MOBILE-SAFE BACKGROUND */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-[-10%] right-[-10%] w-[130vw] h-[130vw] rounded-full blur-[100px]"
-          style={{ background: `radial-gradient(circle, ${currentTheme.accent} 0%, transparent 70%)` }}
-        />
-      </div>
-
-      {/* 3. UNIVERSAL CONTENT WRAPPER */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-10 py-12 md:py-24">
-        
-        {/* HERO SECTION */}
-        {view === 'home' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center w-full">
-            <h1 className="text-[14vw] md:text-[8rem] font-black tracking-tighter leading-[0.8] mb-6 uppercase flex flex-col items-center">
-              <span>MUHIN</span>
-              <span className="text-[#00ac62]">WAVE</span>
-            </h1>
-            <p className="text-[10px] md:text-xl font-bold tracking-[0.4em] mb-12 opacity-60 uppercase">
-              Scaling Restaurants With Precision
-            </p>
-            
-            {/* STATS */}
-            <div className="flex flex-col md:flex-row gap-8 md:gap-20 justify-center items-center mb-16">
-              <div className="text-center">
-                <div className="text-4xl md:text-6xl font-black"><LiveNumber value="1000" suffix="+" /></div>
-                <div className="text-[8px] tracking-widest opacity-40 uppercase">Leads Generated</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-6xl font-black text-[#00ac62]"><LiveNumber value="8.4" suffix="X" /></div>
-                <div className="text-[8px] tracking-widest opacity-40 uppercase">Average ROI</div>
-              </div>
-            </div>
-
-            <button 
-              onClick={() => setView('contact')}
-              className="bg-[#00ac62] text-black font-black px-10 py-5 rounded-full text-[10px] tracking-[0.2em] uppercase shadow-[0_20px_40px_rgba(0,172,98,0.3)]"
-            >
-              Start The Wave
-            </button>
-          </motion.div>
-        )}
-      </div>
-    </main>
-  ); // THIS CLOSES THE RETURN
-} // THIS CLOSES THE FUNCTION
   const ServiceText = ({ title, benefit }) => (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
       className="mt-12 max-w-2xl text-center px-6">
