@@ -7,6 +7,15 @@ import {
   Facebook, Instagram, Linkedin, MessageCircle, Pin, TrendingUp,
   MessageSquare, ThumbsUp, Send, Target, BarChart, User, Mail, Phone, Clock, BookOpen, ArrowRight
 } from 'lucide-react';
+const themes = {
+  home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
+  seo: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  smm: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  ads: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  blog: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  about: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  contact: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' }
+};
 const LiveNumber = ({ value, suffix = "" }) => {
   const [count, setCount] = React.useState(0);
   React.useEffect(() => {
@@ -30,15 +39,7 @@ const LiveNumber = ({ value, suffix = "" }) => {
     </span>
   );
 };
-const themes = {
-  home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
-  seo: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
-  smm: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
-  ads: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
-  blog: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
-  about: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
-  contact: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' }
-};
+
 function AgencySite() {
   const [view, setView] = useState('home');
 
