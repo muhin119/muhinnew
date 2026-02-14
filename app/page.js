@@ -93,6 +93,7 @@ export default function AgencySite() {
             </p>
           </motion.div>
         )}
+        </div>
         
       {/* --- CAPITALIZED NAV BAR --- */}
       <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
