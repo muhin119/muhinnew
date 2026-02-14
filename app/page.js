@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  
   Search, Share2, Heart, ChevronDown, Trophy,
   Facebook, Instagram, Linkedin, MessageCircle, Pin, TrendingUp,
   MessageSquare, ThumbsUp, Send, Target, BarChart, User, Mail, Phone, Clock, BookOpen, ArrowRight
 } from 'lucide-react';
+
+// 1. THEMES DEFINITION (Top of file for global access)
 const themes = {
   home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
   seo: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
@@ -16,6 +17,8 @@ const themes = {
   about: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
   contact: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' }
 };
+
+// 2. LIVENUMBER COMPONENT
 const LiveNumber = ({ value, suffix = "" }) => {
   const [count, setCount] = React.useState(0);
   React.useEffect(() => {
@@ -40,14 +43,14 @@ const LiveNumber = ({ value, suffix = "" }) => {
   );
 };
 
-function AgencySite() {
-  // 1. STATE DEFINITION
+// 3. MAIN AGENCY SITE COMPONENT
+export default function AgencySite() {
   const [view, setView] = useState('home');
 
-  // 2. CRITICAL FIX: Define currentTheme INSIDE the function
+  // CRITICAL FIX: Define currentTheme INSIDE the function
   const currentTheme = themes[view] || themes.home;
 
-  // 3. INTERNAL COMPONENT (Using currentTheme correctly)
+  // INTERNAL HELPER COMPONENT
   const ServiceText = ({ title, benefit }) => (
     <motion.div 
       initial={{ opacity: 0, y: 20 }} 
@@ -67,7 +70,7 @@ function AgencySite() {
   return (
     <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-[#00ac62] selection:text-black overflow-x-hidden flex flex-col relative`}>
       
-      {/* BACKGROUND GLOW - FIXED FOR MOBILE */}
+      {/* BACKGROUND GLOW - FIXED FOR MOBILE FIT */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
@@ -77,23 +80,25 @@ function AgencySite() {
         />
       </div>
 
-      {/* CONTENT WRAPPER */}
+      {/* CONTENT WRAPPER - CENTERED ON PC / STACKED ON MOBILE */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-10 py-20 flex flex-col items-center justify-center min-h-screen">
-        {/* Your content will show up here now without errors */}
+        
         {view === 'home' && (
-          <h1 className="text-[12vw] md:text-[8rem] font-black tracking-tighter uppercase text-center">
-            MUHIN<span style={{ color: currentTheme.accent }}>WAVE</span>
-          </h1>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center w-full">
+            <h1 className="text-[12vw] md:text-[8rem] font-black tracking-tighter uppercase leading-[0.8] mb-4">
+              MUHIN<span style={{ color: currentTheme.accent }}>WAVE</span>
+            </h1>
+            <p className="text-[10px] md:text-xl font-bold tracking-[0.4em] opacity-60 uppercase">
+              Scaling Restaurants With Precision
+            </p>
+          </motion.div>
         )}
-      </div>
 
+        {/* This is where your Nav Bar logic will continue below */}
+      </div>
     </main>
   );
 }
-
-  return (
-<main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-[#00ac62] selection:text-black overflow-x-hidden flex flex-col px-6 md:px-10`}>      
-
       {/* --- CAPITALIZED NAV BAR --- */}
       <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
         <div className="text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
