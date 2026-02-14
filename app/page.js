@@ -32,16 +32,48 @@ const LiveNumber = ({ value, suffix = "" }) => {
 };
 function AgencySite() {
   const [view, setView] = useState('home');
+return (
+    <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white relative overflow-x-hidden`}>
+      
+      {/* 1. FOUNDATION: BACKGROUND GLOW */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute top-[-10%] right-[-10%] w-[130vw] h-[130vw] rounded-full blur-[100px]"
+          style={{ background: `radial-gradient(circle, ${currentTheme.accent} 0%, transparent 70%)` }}
+        />
+      </div>
 
+      {/* 2. RESPONSIVE WRAPPER (Fits Mobile & PC) */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-10 py-12 md:py-24">
+        
+        {/* HERO SECTION */}
+        {view === 'home' && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center">
+            <h1 className="text-[14vw] md:text-[8rem] font-black tracking-tighter leading-[0.8] mb-6 uppercase">
+              MUHIN<span className="text-[#00ac62]">WAVE</span>
+            </h1>
+            <p className="text-xs md:text-xl font-bold tracking-[0.4em] mb-12 opacity-60 uppercase">
+              Scaling Restaurants With Precision
+            </p>
+            {/* ... Rest of your Hero code */}
+          </motion.div>
+        )}
+
+      </div>
+    </main>
+  );
+}
   const themes = {
-    home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
-    seo: { bg: 'bg-[#1a2c24]', accent: '#55efab' },
-    smm: { bg: 'bg-[#2d1b33]', accent: '#ff7eb9' },
-    ads: { bg: 'bg-[#1b2733]', accent: '#4db8ff' },
-    blog: { bg: 'bg-[#0a0a0a]', accent: '#3b82f6' },
-    about: { bg: 'bg-[#1a2c24]', accent: '#55efab' },
-    contact: { bg: 'bg-[#0a0a0a]', accent: '#ff7eb9' }
-  };
+  home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
+  seo: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  smm: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  ads: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  blog: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  about: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+  contact: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' }
+}
 
   const currentTheme = themes[view] || themes.home;
 
