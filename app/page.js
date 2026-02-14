@@ -167,19 +167,69 @@ function AgencySite() {
           </motion.section>
         )}
 
-        {/* --- SEO VIEW --- */}
-        {view === 'seo' && (
-          <motion.section key="seo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-screen flex flex-col justify-center items-center">
-            <motion.div animate={{ x: [-20, 20, -20] }} transition={{ repeat: Infinity, duration: 4 }}><Search size={80} style={{ color: currentTheme.accent }} /></motion.div>
-            <div className="flex gap-2 items-end h-20 mt-8">
-              {[40, 70, 50, 90, 60].map((h, i) => (
-                <motion.div key={i} initial={{ height: 0 }} animate={{ height: h }} transition={{ delay: i * 0.1 }} className="w-4 rounded-t-full" style={{ background: currentTheme.accent }} />
-              ))}
-            </div>
-            <ServiceText title="Local Search Authority" benefit="I rank your business #1 on Google Maps and Search. This brings 24/7 organic traffic without paying for eveI rank your business #1 on Google. I drive organic growth so you dominate your local market without relying on expensive ads.r" />
-          </motion.section>
-        )}y click.
+        {/* --- ULTRA-DYNAMIC LOCAL SEO MATRIX --- */}
+{view === 'seo' && (
+  <motion.section 
+    key="seo" 
+    initial={{ opacity: 0, scale: 0.95 }} 
+    animate={{ opacity: 1, scale: 1 }}
+    className="relative flex flex-col items-center justify-center min-h-[500px] py-12 px-6"
+  >
+    {/* 1. THE RADAR GRID: Represents Search Visibility */}
+    <div className="relative w-full max-w-[500px] aspect-square grid grid-cols-5 gap-3 p-6 bg-white/5 rounded-[3rem] border border-white/10 backdrop-blur-xl overflow-hidden">
+      
+      {/* The Moving Radar Sweep */}
+      <motion.div 
+        animate={{ rotate: 360 }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 z-10 origin-center bg-[conic-gradient(from_0deg,transparent_0%,#00ac62_10%,transparent_20%)] opacity-30"
+      />
 
+      {/* The Search Nodes */}
+      {[...Array(25)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="relative group w-full aspect-square bg-white/5 border border-white/10 rounded-xl overflow-hidden"
+        >
+          {/* Neon "Ranking" Fill */}
+          <motion.div 
+            animate={{ 
+              opacity: [0.1, 0.8, 0.1],
+              scale: [0.8, 1, 0.8]
+            }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              delay: i * 0.15 
+            }}
+            className="absolute inset-0 bg-[#00ac62]"
+          />
+          {/* Highlight for "Rank #1" Node */}
+          {i === 12 && (
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <div className="w-4 h-4 bg-white rounded-full animate-ping shadow-[0_0_20px_#fff]" />
+            </div>
+          )}
+        </motion.div>
+      ))}
+    </div>
+
+    {/* 2. LIVE PERFORMANCE TRACKER */}
+    <div className="mt-10 text-center">
+      <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#00ac62]/10 border border-[#00ac62]/30 text-[#00ac62] font-black text-xs tracking-[0.3em] uppercase mb-6">
+        <div className="w-2 h-2 bg-[#00ac62] rounded-full animate-pulse" />
+        Keyword Indexing: Active
+      </div>
+      
+      <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-4">
+        LOCAL <span style={{ color: '#00ac62' }}>DOMINATION</span>
+      </h3>
+      <p className="text-white/60 max-w-lg mx-auto text-lg leading-relaxed">
+        We push your restaurant to the top of <span className="text-white font-bold">Google Maps</span> by optimizing 100+ local citations and high-intent keywords.
+      </p>
+    </div>
+  </motion.section>
+)}
         {/* --- ULTRA-DYNAMIC SMM VIRAL HUB --- */}
 {view === 'smm' && (
   <motion.section 
@@ -252,21 +302,72 @@ function AgencySite() {
   </motion.section>
 )}
 
-        {/* --- ADS VIEW --- */}
-        {view === 'ads' && (
-          <motion.section key="ads" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-screen flex flex-col justify-center items-center px-10">
-            <div className="w-full max-w-2xl bg-white/5 border border-white/10 p-12 rounded-[50px] backdrop-blur-3xl">
-              <div className="flex justify-between items-end mb-8">
-                <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-6xl font-black">8.4X ROI</motion.span>
-                <TrendingUp size={48} style={{ color: currentTheme.accent }} />
-              </div>
-              <div className="w-full h-4 bg-white/5 rounded-full overflow-hidden">
-                <motion.div initial={{ width: "0%" }} animate={{ width: "84%" }} transition={{ duration: 2 }} className="h-full" style={{ background: currentTheme.accent }} />
-              </div>
-            </div>
-            <ServiceText title="The Revenue Multiplier" benefit="Aggressive Google and Meta ads focused only on high-value bookings. We turn £1 of ad spend into £8.40 of revenue." />
-          </motion.section>
-        )}
+        {/* --- ULTRA-DYNAMIC GOOGLE ADS PROFIT ESCALATOR --- */}
+{view === 'ads' && (
+  <motion.section 
+    key="ads" 
+    initial={{ opacity: 0, y: 30 }} 
+    animate={{ opacity: 1, y: 0 }}
+    className="relative flex flex-col items-center justify-center min-h-[500px] py-12 px-6"
+  >
+    {/* 1. THE REVENUE CHART: Visualizing the 8.4X ROI */}
+    <div className="relative w-full max-w-[600px] h-[350px] bg-white/5 rounded-[3rem] border border-white/10 backdrop-blur-xl overflow-hidden p-8 flex flex-col justify-end">
+      
+      {/* Background ROI Grid */}
+      <div className="absolute inset-0 opacity-[0.03]" 
+        style={{ backgroundImage: `linear-gradient(#00ac62 1px, transparent 1px), linear-gradient(90deg, #00ac62 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
+      />
+
+      <div className="relative flex items-end gap-2 md:gap-4 h-full">
+        {[40, 65, 50, 85, 70, 100].map((height, i) => (
+          <div key={i} className="relative flex-1 flex flex-col items-center justify-end group">
+            
+            {/* The Growth Pillar */}
+            <motion.div 
+              initial={{ height: 0 }}
+              animate={{ height: `${height}%` }}
+              transition={{ duration: 1.5, delay: i * 0.2, ease: "easeOut" }}
+              className="w-full bg-gradient-to-t from-[#00ac62]/20 to-[#00ac62] rounded-t-xl relative"
+            >
+              {/* Top Glow Cap */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-white shadow-[0_0_15px_#fff]" />
+            </motion.div>
+
+            {/* Floating ROI Tooltip on the last bar */}
+            {i === 5 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: -10 }}
+                transition={{ delay: 2.5 }}
+                className="absolute top-0 -translate-y-full bg-white text-black px-3 py-1 rounded-lg font-black text-sm shadow-[0_0_20px_rgba(255,255,255,0.5)]"
+              >
+                8.4X ROI
+              </motion.div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* 2. AD CAMPAIGN TEXT: Focused on Precision */}
+    <div className="mt-10 text-center">
+      <div className="flex justify-center gap-4 mb-8">
+        {['SEARCH', 'REMARKETING', 'CONVERSIONS'].map((tag) => (
+          <span key={tag} className="text-[10px] font-black tracking-widest text-[#00ac62] border border-[#00ac62]/30 px-3 py-1 rounded-md bg-[#00ac62]/5">
+            {tag}
+          </span>
+        ))}
+      </div>
+      
+      <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-4">
+        PROFIT <span style={{ color: '#00ac62' }}>SCALING</span>
+      </h3>
+      <p className="text-white/60 max-w-lg mx-auto text-lg leading-relaxed">
+        Stop wasting budget. We deploy <span className="text-white font-bold">high-precision ad campaigns</span> that turn search intent into immediate restaurant revenue.
+      </p>
+    </div>
+  </motion.section>
+)}
 
         {/* --- BRAND-CONSISTENT BLOG VIEW --- */}
         {view === 'blog' && (
