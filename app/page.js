@@ -55,54 +55,7 @@ function AgencySite() {
 
   return (
 <main className={`min-h-screen transition-colors duration-1000 ${currentTheme.bg} text-white selection:bg-[#00ac62] selection:text-black overflow-x-hidden flex flex-col px-6 md:px-10`}>      
-{/* --- STEP 1: ULTRA-DYNAMIC DIGITAL MARKETING BACKGROUND --- */}
-<div className="fixed inset-0 z-0 overflow-hidden bg-[#050505] pointer-events-none">
-  
-  {/* 1. Glossy ROI Glow (Emerald) - Represents Growth & Success */}
-  <motion.div
-    animate={{ 
-      scale: [1, 1.15, 1],
-      opacity: [0.15, 0.3, 0.15],
-      x: [0, 20, 0],
-      y: [0, -20, 0]
-    }}
-    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-    className="absolute top-[-10%] right-[-5%] w-[100vw] h-[100vw] md:w-[65vw] md:h-[65vw] rounded-full blur-[130px] md:blur-[180px]"
-    style={{ background: 'radial-gradient(circle, #00ac62 0%, transparent 75%)' }}
-  />
 
-  {/* 2. Neon SEO Crawler Line - Represents Indexing & High Performance */}
-  <motion.div
-    animate={{ top: ["-5%", "105%"] }}
-    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-    className="absolute left-0 w-full h-[1px] z-[2]"
-    style={{ 
-      background: 'linear-gradient(90deg, transparent, #00ac62, transparent)',
-      boxShadow: '0 0 15px #00ac62, 0 0 30px rgba(0, 172, 98, 0.6)' 
-    }}
-  >
-    {/* Floating Data Node */}
-    <motion.div 
-      animate={{ x: ["0vw", "100vw"] }}
-      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-      className="absolute top-[-2px] w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_12px_#fff]" 
-    />
-  </motion.div>
-
-  {/* 3. Technical Grid - Represents Local SEO & Data Accuracy */}
-  <div className="absolute inset-0 opacity-[0.05] z-[1]" 
-    style={{ 
-      backgroundImage: `radial-gradient(#00ac62 0.8px, transparent 0.8px)`, 
-      backgroundSize: '40px 40px' 
-    }} 
-  />
-
-  {/* 4. Bottom Corner Accent for Balance */}
-  <div 
-    className="absolute bottom-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px] opacity-10"
-    style={{ background: 'radial-gradient(circle, #00ac62 0%, transparent 70%)' }}
-  />
-</div>
       {/* --- CAPITALIZED NAV BAR --- */}
       <nav className="fixed w-full z-[100] py-6 px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
         <div className="text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
