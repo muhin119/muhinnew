@@ -96,40 +96,108 @@ export default function AgencySite() {
         </div>
         
       <nav className="fixed w-full z-[100] py-6 px-6 md:px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
+        {/* BRAND LOGO */}
         <div className="text-xl md:text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
           MUHIN<span style={{ color: currentTheme.accent }}>.WAVE</span>
         </div>
 
-        {/* MOBILE MENU BUTTON (Shows only on phones) */}
+        {/* --- PC NAV BAR --- */}
+        <div className="hidden md:flex gap-10 text-[11px] font-black tracking-[0.3em] uppercase opacity-70">
+          <button onClick={() => setView('home')} className="hover:opacity-100 transition-opacity">HOME</button>
+          <button onClick={() => setView('blog')} className="hover:opacity-100 transition-opacity">BLOG</button>
+          
+          <div className="relative group cursor-pointer">
+            <button className="flex items-center gap-1 hover:opacity-100 transition-opacity">SERVICES <ChevronDown size={14}/></button>
+            <div className="absolute top-full left-[-20px] pt-4 hidden group-hover:block">
+              <div className="bg-[#161616] border border-white/10 p-6 rounded-[2rem] w-56 shadow-2xl backdrop-blur-2xl">
+                <button onClick={() => setView('seo')} className="block w-full text-left py-3 text-[10px] hover:text-[#00ac62] transition-all tracking-[0.2em] uppercase">SEO MASTERY</button>
+                <button onClick={() => setView('smm')} className="block w-full text-left py-3 text-[10px] hover:text-[#00ac62] transition-all tracking-[0.2em] uppercase">SMM GROWTH</button>
+                <button onClick={() => setView('ads')} className="block w-full text-left py-3 text-[10px] hover:text-[#00ac62] transition-all tracking-[0.2em] uppercase">GOOGLE ADS</button>
+              </div>
+            </div>
+          </div>
+          
+          <button onClick={() => setView('contact')} className="hover:opacity-100 transition-opacity" style={{ color: '#00ac62' }}>CONTACT</button>
+          <button onClick={() => setView('about')} className="hover:opacity-100 transition-opacity">ABOUT</button>
+        </div>
+
+        {/* --- MOBILE TOGGLE --- */}
         <button 
-          className="md:hidden p-2 rounded-xl bg-white/5 border border-white/10"
+          className="md:hidden text-[10px] font-black tracking-[0.2em] px-4 py-2 rounded-full bg-white/5 border border-white/10 uppercase"
           onClick={() => {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
           }}
         >
-          <div className="w-6 h-0.5 bg-white mb-1"></div>
-          <div className="w-6 h-0.5 bg-white mb-1"></div>
-          <div className="w-6 h-0.5 bg-white"></div>
+          MENU
         </button>
 
-        {/* DESKTOP LINKS (Hidden on phones) */}
-        <div className="hidden md:flex gap-8 text-[11px] font-black tracking-[0.3em] uppercase opacity-70">
-          <button onClick={() => setView('home')} className="hover:opacity-100 transition-opacity">HOME</button>
-          <button onClick={() => setView('seo')} className="hover:opacity-100 transition-opacity">SEO</button>
-          <button onClick={() => setView('smm')} className="hover:opacity-100 transition-opacity">SMM</button>
-          <button onClick={() => setView('ads')} className="hover:opacity-100 transition-opacity">ADS</button>
-          <button onClick={() => setView('contact')} className="hover:opacity-100 transition-opacity">CONTACT</button>
-        </div>
+        {/* --- DYNAMIC ANIMATED MOBILE MENU --- */}
+        <AnimatePresence>
+          <div id="mobile-menu" className="hidden absolute top-full left-0 w-full bg-[#0F0F0F]/95 border-b border-white/10 p-10 flex flex-col gap-6 text-center md:hidden backdrop-blur-3xl shadow-2xl">
+            {[
+              { label: 'HOME', action: () => setView('home') },
+              { label: 'BLOG', action: () => setView('blog') }
+            ].map((item, i) => (
+              <motion.button
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                onClick={() => { item.action(); document.getElementById('mobile-menu').classList.add('hidden'); }}
+                className="text-[11px] font-black tracking-[0.5em] uppercase"
+              >
+                {item.label}
+              </motion.button>
+            ))}
 
-        {/* MOBILE SLIDE-DOWN MENU (Hidden by default) */}
-        <div id="mobile-menu" className="hidden absolute top-full left-0 w-full bg-[#0F0F0F] border-b border-white/10 p-10 flex flex-col gap-8 text-center md:hidden backdrop-blur-3xl">
-          <button onClick={() => { setView('home'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">HOME</button>
-          <button onClick={() => { setView('seo'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">SEO MASTERY</button>
-          <button onClick={() => { setView('smm'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">SMM GROWTH</button>
-          <button onClick={() => { setView('ads'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]">GOOGLE ADS</button>
-          <button onClick={() => { setView('contact'); document.getElementById('mobile-menu').classList.add('hidden'); }} className="text-xs font-black tracking-[0.4em]" style={{ color: '#00ac62' }}>START THE WAVE</button>
-        </div>
+            {/* SERVICES SUB-MENU WITH GLOW ANIMATION */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col gap-4 py-4 border-y border-white/5"
+            >
+              <span className="text-[8px] opacity-30 tracking-[0.6em]">SERVICES</span>
+              {['SEO MASTERY', 'SMM GROWTH', 'GOOGLE ADS'].map((service, i) => (
+                <button 
+                  key={service}
+                  onClick={() => { 
+                    setView(service.split(' ')[0].toLowerCase()); 
+                    document.getElementById('mobile-menu').classList.add('hidden'); 
+                  }}
+                  className="text-[11px] font-black tracking-[0.5em] uppercase text-[#00ac62] hover:scale-110 transition-transform"
+                >
+                  {service}
+                </button>
+              ))}
+            </motion.div>
+
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              onClick={() => { setView('contact'); document.getElementById('mobile-menu').classList.add('hidden'); }}
+              className="text-[11px] font-black tracking-[0.5em] uppercase text-[#00ac62]"
+            >
+              CONTACT
+            </motion.button>
+
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 }}
+              onClick={() => { setView('about'); document.getElementById('mobile-menu').classList.add('hidden'); }}
+              className="text-[11px] font-black tracking-[0.5em] uppercase"
+            >
+              ABOUT
+            </motion.button>
+
+            <button onClick={() => document.getElementById('mobile-menu').classList.add('hidden')} className="mt-4 text-[9px] opacity-20 font-black uppercase tracking-widest">
+              [ CLOSE ]
+            </button>
+          </div>
+        </AnimatePresence>
       </nav>
 
       <AnimatePresence mode="wait">
