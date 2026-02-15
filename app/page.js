@@ -1,10 +1,9 @@
 "use client"
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, Share2, Heart, ChevronDown, Trophy,
   Facebook, Instagram, Linkedin, MessageCircle, Pin, TrendingUp,
-  MessageSquare, ThumbsUp, Send, Target, BarChart, User, Mail, Phone, Clock, BookOpen, ArrowRight
+  MessageSquare, ThumbsUp, Send, Target, BarChart, User, Mail, Phone, Clock, BookOpen, ArrowRight,
+  MapPin, Navigation, Utensils
 } from 'lucide-react';
 
 // 1. THEMES DEFINITION (Top of file for global access)
