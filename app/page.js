@@ -291,11 +291,11 @@ export default function AgencySite() {
     {/* --- ULTRA-DYNAMIC LOCAL SEO MASTERED --- */}
 {view === 'seo' && (
   <motion.section 
-    key="seo" 
-    initial={{ opacity: 0, y: 30 }} 
-    animate={{ opacity: 1, y: 0 }}
-    className="w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col lg:flex-row-reverse items-center justify-between gap-16"
-  >
+  key="seo" 
+  initial={{ opacity: 0, y: 30 }} 
+  animate={{ opacity: 1, y: 0 }}
+  className="w-full max-w-[1400px] mx-auto px-6 md:px-20 py-32 md:py-48 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 md:gap-20"
+>
     {/* Right: Geographic Scanning Hub */}
     <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 overflow-hidden flex items-center justify-center shadow-2xl">
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#00ac62 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
@@ -346,11 +346,11 @@ export default function AgencySite() {
         {/* --- ULTRA-DYNAMIC SMM VIRAL HUB --- */}
 {view === 'smm' && (
   <motion.section 
-    key="smm" 
-    initial={{ opacity: 0 }} 
-    animate={{ opacity: 1 }}
-    className="relative flex flex-col items-center justify-center min-h-[500px] py-12"
-  >
+  key="smm" 
+  initial={{ opacity: 0 }} 
+  animate={{ opacity: 1 }}
+  className="relative w-full max-w-[1400px] mx-auto px-6 md:px-20 py-24 md:py-40 flex flex-col items-center justify-center min-h-[600px]"
+>
     <div className="relative w-full max-w-[400px] h-[400px] flex items-center justify-center">
       
       {/* 1. THE CORE: Your Brand Strategy Hub */}
@@ -418,11 +418,11 @@ export default function AgencySite() {
 {/* --- ULTRA-DYNAMIC ADS ENGINE --- */}
 {view === 'ads' && (
   <motion.section 
-    key="ads" 
-    initial={{ opacity: 0, y: 50 }} 
-    animate={{ opacity: 1, y: 0 }}
-    className="w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col lg:flex-row items-center justify-between gap-16"
-  >
+  key="ads" 
+  initial={{ opacity: 0, y: 50 }} 
+  animate={{ opacity: 1, y: 0 }}
+  className="w-full max-w-[1400px] mx-auto px-6 md:px-20 py-32 md:py-48 flex flex-col lg:flex-row items-center justify-between gap-16"
+>
     {/* Left: Cinematic ROI Visual */}
     <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 shadow-2xl overflow-hidden flex items-end p-12">
       {/* Dynamic ROI Line */}
