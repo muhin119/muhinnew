@@ -84,7 +84,7 @@ export default function AgencySite() {
         
         {view === 'home' && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center w-full">
-            <h1 className="text-[12vw] md:text-[8rem] font-black tracking-tighter uppercase leading-[0.8] mb-4">
+            <h1 className="text-[15vw] md:text-[8rem] font-black tracking-tighter uppercase leading-[0.8] mb-4 text-center">
               MUHIN<span style={{ color: currentTheme.accent }}>WAVE</span>
             </h1>
             <p className="text-[10px] md:text-xl font-bold tracking-[0.4em] opacity-60 uppercase">
@@ -296,9 +296,8 @@ export default function AgencySite() {
   className="w-full max-w-[1400px] mx-auto px-6 md:px-20 py-32 md:py-48 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 md:gap-20"
 >
     {/* Right: Geographic Scanning Hub */}
-    <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 overflow-hidden flex items-center justify-center shadow-2xl">
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#00ac62 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
-      
+<div className="relative w-full flex flex-col md:flex-row justify-center items-center gap-10 md:gap-12 px-6">      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#00ac62 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
+    
       <div className="relative w-full flex justify-center items-center gap-6 md:gap-12 px-6">
         {[
           { Icon: MapPin, label: "MAPS" },
@@ -423,8 +422,7 @@ export default function AgencySite() {
   className="w-full max-w-[1400px] mx-auto px-6 md:px-20 py-32 md:py-48 flex flex-col lg:flex-row items-center justify-between gap-16"
 >
     {/* Left: Cinematic ROI Visual */}
-    <div className="relative w-full lg:w-[60%] h-[450px] bg-[#0a0a0a] rounded-[3rem] border border-white/5 shadow-2xl overflow-hidden flex items-end p-12">
-      {/* Dynamic ROI Line */}
+<div className="relative z-10 w-full flex flex-col md:flex-row justify-between items-center md:items-end">      {/* Dynamic ROI Line */}
       <svg className="absolute inset-0 w-full h-full opacity-80" viewBox="0 0 100 100" preserveAspectRatio="none">
         <motion.path
           d="M 5 95 C 10 95, 30 95, 45 60 C 60 25, 85 5, 95 5"
