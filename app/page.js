@@ -1,4 +1,5 @@
 "use client"
+import React, { useState, useEffect } from 'react';
 import { 
   Search, Share2, Heart, ChevronDown, Trophy,
   Facebook, Instagram, Linkedin, MessageCircle, Pin, TrendingUp,
@@ -93,7 +94,7 @@ export default function AgencySite() {
           </motion.div>
         )}
         </div>
-        
+      
       <nav className="fixed w-full z-[100] py-6 px-6 md:px-10 flex justify-between items-center backdrop-blur-md border-b border-white/5">
         {/* BRAND LOGO */}
         <div className="text-xl md:text-2xl font-black tracking-tighter cursor-pointer" onClick={() => setView('home')}>
