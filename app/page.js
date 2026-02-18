@@ -35,6 +35,7 @@ const LiveNumber = ({ value, suffix = "" }) => {
     window.requestAnimationFrame(step);
   }, [value]);
 
+ final-edit
   return (
     <span>
       {suffix === "X" ? count.toFixed(1) : Math.floor(count).toLocaleString()}
@@ -43,12 +44,21 @@ const LiveNumber = ({ value, suffix = "" }) => {
   );
 };
 
+  const themes = {
+    home: { bg: 'bg-[#0F0F0F]', accent: '#00ac62' },
+    blog: { bg: 'bg-[#0a0a0a]', accent: '#00ac62' },
+    about: { bg: 'bg-[#1a2c24]', accent: '#00ac62' },
+    contact: { bg: 'bg-[#0a0a0a]', accent: '#ff7eb9' }
+  };
+ main
+
 // 3. MAIN AGENCY SITE COMPONENT
 export default function AgencySite() {
   const [view, setView] = useState('home');
 
   // CRITICAL FIX: currentTheme MUST be defined inside the function
   const currentTheme = themes[view] || themes.home;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // INTERNAL HELPER COMPONENT
   const ServiceText = ({ title, benefit }) => (
