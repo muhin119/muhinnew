@@ -291,54 +291,108 @@ export default function AgencySite() {
     {/* --- ULTRA-DYNAMIC LOCAL SEO MASTERED --- */}
 {view === 'seo' && (
   <motion.section 
-  key="seo" 
-  initial={{ opacity: 0, y: 30 }} 
-  animate={{ opacity: 1, y: 0 }}
-  className="w-full max-w-[1400px] mx-auto px-6 md:px-20 py-32 md:py-48 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 md:gap-20"
->
-    {/* Right: Geographic Scanning Hub */}
-<div className="relative w-full flex flex-col md:flex-row justify-center items-center gap-10 md:gap-12 px-6">      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(#00ac62 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
-    
-      <div className="relative w-full flex justify-center items-center gap-6 md:gap-12 px-6">
-        {[
-          { Icon: MapPin, label: "MAPS" },
-          { Icon: Navigation, label: "TRAFFIC" },
-          { Icon: Utensils, label: "DINING" }
-        ].map((item, i) => (
-          <React.Fragment key={i}>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.8 }}
-              className="flex flex-col items-center gap-4"
-            >
-              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-[#00ac62]/30 flex items-center justify-center bg-black">
-                <item.Icon size={32} className="text-[#00ac62]" />
-              </div>
-              <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-[#00ac62] uppercase">{item.label}</span>
-            </motion.div>
-            
-            {i < 2 && (
-  <motion.div
-    initial={{ width: 0 }}
-    animate={{ width: 60 }} // FIXED: Using a plain number that works on all screens
-    transition={{ delay: i * 0.8 + 0.4, duration: 0.5 }}
-    className="h-[2px] bg-gradient-to-r from-[#00ac62] to-transparent"
-  />
-)}
-          </React.Fragment>
-        ))}
+    key="seo" 
+    initial={{ opacity: 0 }} 
+    animate={{ opacity: 1 }}
+    className="w-full max-w-[1400px] mx-auto px-6 py-32 flex flex-col lg:flex-row items-center justify-between gap-16"
+  >
+    {/* LEFT: CONTENT AREA */}
+    <div className="w-full lg:w-[40%] text-left space-y-8 z-10">
+      <h3 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase italic">
+        LOCAL <br/> <span style={{ color: '#00ac62' }}>DOMINANCE</span>
+      </h3>
+      <p className="text-lg md:text-xl text-white/50 leading-relaxed font-bold uppercase tracking-wide">
+        We don't just rank; we own the map. From search query to restaurant table.
+      </p>
+      
+      {/* REAL-TIME STAT PIILLS */}
+      <div className="flex gap-4">
+        <div className="px-4 py-2 border border-[#00ac62]/30 rounded-full text-[10px] font-black text-[#00ac62]">KW RANK: #1</div>
+        <div className="px-4 py-2 border border-white/10 rounded-full text-[10px] font-black opacity-40">GMB VERIFIED</div>
       </div>
     </div>
 
-    {/* Left: Content Area */}
-    <div className="w-full lg:w-[35%] text-left space-y-8">
-      <h3 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase">
-        SEO <br/> <span style={{ color: '#00ac62' }}>MASTERY</span>
-      </h3>
-      <p className="text-xl text-white/50 leading-relaxed font-medium">
-        We bridge the gap between a digital map search and a physical restaurant booking. Total geographic authority.
-      </p>
+    {/* RIGHT: THE GOOGLE SEARCH SIMULATION */}
+    <div className="relative w-full lg:w-[55%] flex justify-center">
+      <motion.div 
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="w-full max-w-md bg-[#161616] border border-white/10 rounded-[2rem] p-6 shadow-[0_0_50px_rgba(0,172,98,0.15)] overflow-hidden"
+      >
+        {/* GOOGLE SEARCH BAR ANIMATION */}
+        <div className="w-full bg-white/5 rounded-full px-5 py-3 flex items-center gap-3 mb-8 border border-white/5">
+          <Search size={16} className="text-[#00ac62]" />
+          <motion.div className="text-xs font-bold tracking-widest text-[#00ac62]">
+            {/* TYPING ANIMATION */}
+            <motion.span
+              animate={{ opacity: [0, 1, 0] }}
+              transition={{ repeat: Infinity, duration: 0.8 }}
+              className="inline-block w-[2px] h-4 bg-[#00ac62] float-right"
+            />
+            <motion.span
+              initial={{ width: 0 }}
+              animate={{ width: "auto" }}
+              transition={{ duration: 2, ease: "steps(12)" }}
+              className="overflow-hidden whitespace-nowrap block"
+            >
+              MUHIN WAVE AGENCY
+            </motion.span>
+          </motion.div>
+        </div>
+
+        {/* GOOGLE BUSINESS PROFILE (GMB) CARD */}
+        <motion.div 
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 2.2 }}
+          className="bg-white/5 rounded-2xl p-5 border-l-4 border-[#00ac62]"
+        >
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h4 className="text-sm font-black mb-1 italic">MUHIN WAVE</h4>
+              <div className="flex gap-1 text-[#00ac62]">
+                {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="#00ac62" />)}
+              </div>
+            </div>
+            <div className="bg-[#00ac62]/20 p-2 rounded-lg">
+              <MapPin size={18} className="text-[#00ac62]" />
+            </div>
+          </div>
+          
+          {/* KW RANKING CHART SIMULATION */}
+          <div className="space-y-3 pt-4 border-t border-white/5">
+            <div className="flex justify-between items-center text-[8px] font-black opacity-40 uppercase tracking-widest">
+              <span>Visibility Index</span>
+              <span className="text-[#00ac62]">↑ 340%</span>
+            </div>
+            <div className="h-16 flex items-end gap-1">
+              {[20, 35, 25, 60, 45, 85, 100].map((h, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ height: 0 }}
+                  animate={{ height: `${h}%` }}
+                  transition={{ delay: 2.5 + (i * 0.1) }}
+                  className="flex-1 bg-gradient-to-t from-[#00ac62] to-[#00ac62]/20 rounded-t-sm"
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* SEARCH RESULT LISTING */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ delay: 3.5 }}
+          className="mt-6 space-y-4"
+        >
+          <div className="h-2 w-3/4 bg-white/20 rounded-full" />
+          <div className="h-2 w-1/2 bg-white/10 rounded-full" />
+        </motion.div>
+      </motion.div>
+
+      {/* BACKGROUND DECORATION */}
+      <div className="absolute -z-10 w-full h-full bg-[#00ac62]/5 blur-[100px] rounded-full scale-150" />
     </div>
   </motion.section>
 )}
